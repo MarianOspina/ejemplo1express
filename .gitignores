@@ -1,0 +1,3 @@
+//Este archico cuando uno hace push, no envia esto para que no ocupe espacio en el repositorio
+node_modules
+.env

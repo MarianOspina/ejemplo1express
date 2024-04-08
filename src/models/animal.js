@@ -1,5 +1,5 @@
 const mongoose = require("mongoose"); // importando el componente mogoose
-const animalSchema = mongoose.Schema({
+const animalSchema = mongoose.Schema({//creamos una colección
     nombre: {
         type: String,
         required: true,
@@ -10,11 +10,11 @@ const animalSchema = mongoose.Schema({
     },
     tipo: {
         type: String,
-        required: true,
+        required: true,//si es true este elemento es TOTALMENTE REQUERIDO
     },
     fecha: {
         type: Date,
-        requiered: true,
+        requiered: false,// si es false este elemento NO ES REQUERIDO
     }
-});
-module.exports = mongoose.model("Animal", animalSchema);
+});// elementos de la colección
+module.exports = mongoose.model("Animal", animalSchema);//aqui mandamos animal.js a animal
