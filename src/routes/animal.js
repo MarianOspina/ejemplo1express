@@ -1,9 +1,12 @@
+const verifyToken = require('./validate_token');
+
+
 const express = require("express");
 const router = express.Router(); //manejador de rutas de express
 const animalSchema = require("../models/animal");
 //Nuevo animal
 //Recordar que cuando se utiliza un post para agregara un nuevo documento
-router.post("/animals", (req, res) => {
+router.post("/animals", verifyToken, (req, res) => {
     const animal = animalSchema(req.body);
     animal
         .save()
@@ -21,10 +24,9 @@ router.get("/animals", (req, res) => {
 });
 
 //Consultar un animal por su id
-router.get("/animals/:id", (req, res) => {
-    const { id } = req.params;
-    animalSchema
-        .findById(id)
+router.get("/animals", verifyToken, (req, res) => {
+   
+    animalSchema.find()
         .then((data) => res.json(data))
         .catch((error) => res.json({ message: error }));
 });
